@@ -1,5 +1,4 @@
 <script>
-	import ImageList from "@smui/image-list/src/ImageList.svelte";
 	import Carousel from "./Carousel.svelte";
 
 	export let imageLinks = [];

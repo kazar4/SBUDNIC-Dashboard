@@ -14,10 +14,12 @@
 	const { open } = getContext('simple-modal');
 	const showSurprise = () => open(GalleryContent, { imageLinks: dataList });
 	
-	let address = "http://localhost:1220/getGalleryLinkList"
+	export let address = ""
+	let endpoint = "getGalleryLinkList";
+	let newAddress = address + endpoint
 	let dataList = []
-	function fetchJsonRepeat(address, delayM) {
-			fetch(address).then((res) => res.json()).then((json) => {
+	function fetchJsonRepeat(newAddress, delayM) {
+			fetch(newAddress).then((res) => res.json()).then((json) => {
 			dataList = json["data"]
 			// console.log(dataList)
 			// console.log(json)
@@ -26,7 +28,7 @@
 			// rerender each array in html given that json array
 		});
 	}
-	fetchJsonRepeat(address, 5000)
+	fetchJsonRepeat(newAddress, 5000)
 </script>
 
 

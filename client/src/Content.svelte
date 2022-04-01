@@ -1,11 +1,14 @@
 <script>
-	import Card, { Content } from "@smui/card";
 	import LayoutGrid, { Cell } from '@smui/layout-grid';
 	import SBanner from "./SBanner.svelte";
 	import LogoDetails from "./LogoDetails.svelte";
 	import UpdatesPane from "./UpdatesPane.svelte";
 	import GalleryPane from "./GalleryPane.svelte";
 	import TelemetryPane from "./TelemetryPane.svelte"
+
+	//let address = "https://kazar4.com:1220/";
+	 let address = "http://localhost:1220/"
+
 </script>
 	
 
@@ -16,15 +19,15 @@
 
         <LayoutGrid>
             <Cell span={6}>
-                <UpdatesPane/>
+                <UpdatesPane {address}/>
             </Cell>
             <Cell span={6}>
 				<div class={"dataPanes"}>
 					<div class={"dataCard"}>
-						<GalleryPane/>
+						<GalleryPane {address}/>
 					</div>
 					<div class={"dataCard"}>
-						<TelemetryPane/>
+						<TelemetryPane {address}/>
 					</div>
 				</div>
             </Cell>

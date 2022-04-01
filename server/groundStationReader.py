@@ -111,9 +111,9 @@ def packetParser(packet, miscInfo):
 
                     fileName = f'{image_start_times[image_id]}.bin'
                     os.system(f'./ssdv -d ./images/{fileName} ./jpegImages/{fileName[:-4]}.jpeg')
-                    newImagePath = f'./jpegImages/{fileName[:-4]}.jpeg'
-                    newImageLink = "http://127.0.0.1:8887" + "/" +  newImagePath
-                    updatesJSONHolder.addToJSON(packet[0], "Image Finished", printText, dt, freqError, RSSI, SNR, newImageLink)
+                    newImagePath = f'{fileName[:-4]}.jpeg'
+                    # newImageLink = "http://127.0.0.1:8887" + "/" +  newImagePath
+                    updatesJSONHolder.addToJSON(packet[0], "Image Finished", printText, dt, freqError, RSSI, SNR, newImagePath)
 
                     del images[image_id]
 

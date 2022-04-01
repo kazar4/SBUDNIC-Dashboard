@@ -15,19 +15,21 @@
 	const { open } = getContext('simple-modal');
 	const showImage = (link) => open(SingleImage, { link: link });
 	
-	let address = "http://localhost:1220/getCommandData"
+	export let address = ""
+	let endpoint = "getCommandData";
+	let newAddress = address + endpoint
 	let dataList = []
-	function fetchJsonRepeat(address, delayM) {
-			fetch(address).then((res) => res.json()).then((json) => {
+	function fetchJsonRepeat(newAddress, delayM) {
+			fetch(newAddress).then((res) => res.json()).then((json) => {
 			dataList = json["data"]
+			// console.log(dataList)
 			// console.log(json)
 			// setTimeout(() => fetchJsonRepeat(address), delayM);
 			// have json variable be a reactive state
 			// rerender each array in html given that json array
 		});
 	}
-	fetchJsonRepeat(address, 5000)
-	
+	fetchJsonRepeat(newAddress, 5000)
 </script>
 
 
