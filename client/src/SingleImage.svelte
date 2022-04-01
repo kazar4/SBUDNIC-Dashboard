@@ -2,13 +2,9 @@
     import Button, { Label } from '@smui/button';
 
     import { getContext } from 'svelte';
-    import Popup from './Popup.svelte';
 	const { open } = getContext('simple-modal');
 
     import GalleryContent from './GalleryContent.svelte'
-
-    import SingleImageGallery from './SingleImageGallery.svelte'
-
 	const showSurprise = () => open(GalleryContent, {imageLinks: dataList});
 
     const changeImage = (change) => {
@@ -29,7 +25,9 @@
             newIndex = 0
         }
 
-        open(SingleImageGallery, {link: dataList[newIndex]["link"], fromGallery: true, dataList: dataList, date: date})
+        link = dataList[newIndex]["link"]
+
+        //open(SingleImageGallery, {link: dataList[newIndex]["link"], fromGallery: true, dataList: dataList, date: date})
         };
 
     export let link = "";
@@ -62,6 +60,7 @@
     //img.ypos = 0;
 
     import { Canvas, Layer, t } from "svelte-canvas";
+import InnerGrid from '@smui/layout-grid/src/InnerGrid.svelte';
 
     $: render = ({ context, width, height }) => {
         var img = new Image();
@@ -85,7 +84,17 @@
 
             // draw the image
             // since the context is rotated, the image will be rotated also
-            context.drawImage(img,-img.width/2,-img.height/2, img.width * 1.3, img.height * 1.3);
+            /*
+            let newScale = 1
+            let newW = img.width * newScale
+            let newH = img.height * newScale
+            while (newW > width || newH > height || newW > height || newH > width) {
+                newScale = newScale - 0.1
+                newW = img.width * newScale
+                newH = img.height * newScale
+            } 
+            */
+            context.drawImage(img,-img.width/2,-img.height/2, img.width, img.height);
 
             // we’re done with the rotating so restore the unrotated context
 
@@ -94,9 +103,12 @@
         }, false);
     };
 
+    let w;
+    let h;
+    //<svelte:window bind:innerWidth={w} bind:innerHeight={h}/>
 </script>
-  
-<div>
+
+<div bind:clientWidth={w} bind:clientHeight={h}>
     <Button on:click={() => {currRotation = currRotation + 90}} color={"secondary"}>Flip Image</Button>
     {#if fromGallery}
         <Button on:click={() => showSurprise()} color={"secondary"}>Go Back to Gallery</Button>
@@ -107,7 +119,7 @@
         <h3>{date}</h3>
     {/if}
     <div id={"canvas"}> 
-        <Canvas width={600} height={600} on:click={() => {currRotation = currRotation + 90}}>
+        <Canvas width={w} height={h*0.7} on:click={() => {currRotation = currRotation + 90}}>
             <Layer {render}/>
         </Canvas>
     </div>

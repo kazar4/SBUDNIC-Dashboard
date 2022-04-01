@@ -1,5 +1,6 @@
 <script>
 	import Carousel from "./Carousel.svelte";
+	import { onMount } from 'svelte';
 
 	export let imageLinks = [];
 
@@ -26,15 +27,26 @@
 		newLinks.push({"path":imageLinks[i]["link"], "name": date.toString().slice(0, date.toString().indexOf("GMT"))})
 	}
 
+	let w;
+	let h;
 	let ImageSpread = []
-	const chunkSize = 3;
-	for (let i = 0; i < newLinks.length; i += chunkSize) {
-		ImageSpread.push(newLinks.slice(i, i + chunkSize));
-	}
+
+	onMount(() => {
+		console.log(w)
+		const chunkSize = parseInt(w/250);
+		for (let i = 0; i < newLinks.length; i += chunkSize) {
+			ImageSpread.push(newLinks.slice(i, i + chunkSize));
+		}
+		ImageSpread = ImageSpread //updates state as push does not
+	})
+
 	//console.log(ImageSpread)
+	//<svelte:window bind:innerWidth={w} bind:innerHeight={h}/>
 </script>
 
-<div id="imageGallery">
+
+
+<div id="imageGallery" bind:clientWidth={w} bind:clientHeight={h}>
 	{#each ImageSpread as images, i}
 		<div>
 			<Carousel {images} {imageLinks} {date} imageHeight={140} imageSpacing={15}/>

@@ -5,12 +5,28 @@
 	import UpdatesPane from "./UpdatesPane.svelte";
 	import GalleryPane from "./GalleryPane.svelte";
 	import TelemetryPane from "./TelemetryPane.svelte"
+	import MediaQuery from "./MediaQuery.svelte";
 
 	//let address = "https://kazar4.com:1220/";
 	 let address = "http://localhost:1220/"
 
+	 function changeOrderProp(elem, matchesTab) {
+		if (elem === "cell1") {
+			if (matchesTab) {
+				return 1
+			} else {
+				return 2
+			}
+		} else if (elem === "cell2") {
+			if (matchesTab) {
+				return 2
+			} else {
+				return 1
+			}
+		}
+	 }
+
 </script>
-	
 
 <div>
     <SBanner></SBanner>
@@ -18,19 +34,21 @@
         <LogoDetails/>
 
         <LayoutGrid>
-            <Cell span={6}>
-                <UpdatesPane {address}/>
-            </Cell>
-            <Cell span={6}>
-				<div class={"dataPanes"}>
-					<div class={"dataCard"}>
-						<GalleryPane {address}/>
+			<MediaQuery query="(min-width: 850px)" let:matches>
+				<Cell span={6} order={changeOrderProp("cell1", matches)}>
+					<UpdatesPane {address}/>
+				</Cell>
+				<Cell span={6} order={changeOrderProp("cell2", matches)}>
+					<div class={"dataPanes"}>
+						<div class={"dataCard"}>
+							<GalleryPane {address}/>
+						</div>
+						<div class={"dataCard"}>
+							<TelemetryPane {address}/>
+						</div>
 					</div>
-					<div class={"dataCard"}>
-						<TelemetryPane {address}/>
-					</div>
-				</div>
-            </Cell>
+				</Cell>
+			</MediaQuery>
         </LayoutGrid>
     </main>
 </div>

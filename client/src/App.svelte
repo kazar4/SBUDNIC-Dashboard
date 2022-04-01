@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import SContent from './Content.svelte';
   	import Modal from 'svelte-simple-modal';
 </script>
