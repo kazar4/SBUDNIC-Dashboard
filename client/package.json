@@ -1,7 +1,6 @@
 {
   "name": "svelte-app",
   "version": "1.0.0",
-  "homepage": "/sbudnic",
   "private": true,
   "scripts": {
     "build": "rollup -c",
