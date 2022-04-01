@@ -5,6 +5,7 @@
 	import LogoDetails from "./LogoDetails.svelte";
 	import UpdatesPane from "./UpdatesPane.svelte";
 	import GalleryPane from "./GalleryPane.svelte";
+	import TelemetryPane from "./TelemetryPane.svelte"
 </script>
 	
 
@@ -18,7 +19,14 @@
                 <UpdatesPane/>
             </Cell>
             <Cell span={6}>
-                <GalleryPane/>
+				<div class={"dataPanes"}>
+					<div class={"dataCard"}>
+						<GalleryPane/>
+					</div>
+					<div class={"dataCard"}>
+						<TelemetryPane/>
+					</div>
+				</div>
             </Cell>
         </LayoutGrid>
     </main>
@@ -29,6 +37,14 @@
 		text-align: center;
 		padding: 1em;
 		margin: 0 auto;
+	}
+
+	.dataPanes > .dataCard {
+		margin-bottom: 20px;
+	}
+
+	.dataPanes > .dataCard:last-child {
+		margin-bottom: 0px;
 	}
 
 	@media (min-width: 640px) {

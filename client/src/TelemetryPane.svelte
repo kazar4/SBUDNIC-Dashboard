@@ -13,7 +13,7 @@
 	import Popup from './Popup.svelte';
 	const { open } = getContext('simple-modal');
 	const showSurprise = () => open(GalleryContent, { imageLinks: dataList });
-	
+	/*
 	let address = "http://localhost:1220/getGalleryLinkList"
 	let dataList = []
 	function fetchJsonRepeat(address, delayM) {
@@ -27,13 +27,14 @@
 		});
 	}
 	fetchJsonRepeat(address, 5000)
+	*/
 </script>
 
 
 <div>
 	<Card padded>
 		<PrimaryAction on:click={showSurprise} padded>
-				Open Gallery
+				Open Telemetry (TODO)
 		  </PrimaryAction>
 	</Card>
 </div>

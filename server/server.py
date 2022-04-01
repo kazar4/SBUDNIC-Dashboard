@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 import updatesJSONHolder
 import json
 
+import os
+
 import sys
 sys.path.append("..")
 
@@ -37,11 +39,14 @@ def telemetryData():
   
   return "OK", 200
 
-@app.route('/getImageLinkList', methods=['GET'])
+@app.route('/getGalleryLinkList', methods=['GET'])
 @cross_origin()
 def getImageLinkList():
+    files = os.listdir("jpegImages")
+    linksInfo = [{"link":("http://127.0.0.1:8887" + "/jpegImages/" + f), "fileName":f} for f in files]
+    linksInfo = {"data":linksInfo}
 
-    return "test", 200
+    return jsonify(linksInfo), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=1220)

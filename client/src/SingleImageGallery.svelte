@@ -7,12 +7,12 @@
 
     import GalleryContent from './GalleryContent.svelte'
 
-    import SingleImageGallery from './SingleImageGallery.svelte'
+    import SingleImage from './SingleImage.svelte'
 
 	const showSurprise = () => open(GalleryContent, {imageLinks: dataList});
 
     const changeImage = (change) => {
-
+        
         let currIndex = 0
         for (let i in dataList) {
             let l = dataList[i]["link"]
@@ -29,8 +29,9 @@
             newIndex = 0
         }
 
-        open(SingleImageGallery, {link: dataList[newIndex]["link"], fromGallery: true, dataList: dataList, date: date})
-        };
+        open(SingleImage, {link: dataList[newIndex]["link"], fromGallery: true, dataList: dataList, date: date})
+    };
+
 
     export let link = "";
     export let fromGallery = false;
