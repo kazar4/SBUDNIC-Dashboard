@@ -1,0 +1,8 @@
+node_modules/
+build/
+/.vscode
+/__pycache__
+.vscode/
+__pycache__/
+.vscode
+__pycache__
