@@ -6,3 +6,11 @@ build/
 __pycache__/
 .vscode
 __pycache__
+
+client/public/sbudnic/build
+client/.vscode
+client/public/sbudnic/build/
+client/.vscode/
+
+server/__pycache__/
+server/__pycache__/
