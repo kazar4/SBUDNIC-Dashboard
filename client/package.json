@@ -14,7 +14,6 @@
     "@smui/banner": "^6.0.0-beta.15",
     "@smui/button": "^6.0.0-beta.15",
     "@smui/card": "^6.0.0-beta.15",
-    "@smui/image-list": "^6.0.0-beta.15",
     "@smui/layout-grid": "^6.0.0-beta.15",
     "@smui/top-app-bar": "^6.0.0-beta.15",
     "@tsconfig/svelte": "^3.0.0",
