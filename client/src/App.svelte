@@ -3,7 +3,8 @@
   	import Modal from 'svelte-simple-modal';
 </script>
 	
-<Modal>
+<Modal
+  	styleContent={{ maxHeight:"calc(100vh - 1rem)"}}>
 	<SContent/>
 </Modal>
 

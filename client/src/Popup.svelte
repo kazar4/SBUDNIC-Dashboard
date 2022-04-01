@@ -1,5 +1,5 @@
 <script>
     export let message = 'Hi';
-  </script>
+</script>
   
 <p>🎉 {message} 🍾</p>
