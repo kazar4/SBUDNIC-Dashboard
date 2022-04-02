@@ -71,7 +71,7 @@
 
 	.updates {
 		padding: 20px;
-		height: 400px;
+		height: 600px;
 		overflow-y:auto
 	}
 
