@@ -117,6 +117,8 @@ import InnerGrid from '@smui/layout-grid/src/InnerGrid.svelte';
     {/if}
     {#if fromGallery}
         <h3>{date}</h3>
+    {:else}
+        <h3>Image</h3>
     {/if}
     <div id={"canvas"}> 
         <Canvas width={w} height={h*0.7} on:click={() => {currRotation = currRotation + 90}}>

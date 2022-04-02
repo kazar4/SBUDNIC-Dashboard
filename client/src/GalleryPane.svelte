@@ -19,7 +19,7 @@
 	let newAddress = address + endpoint
 	let dataList = []
 	function fetchJsonRepeat(newAddress, delayM) {
-			fetch(newAddress).then((res) => res.json()).then((json) => {
+			fetch(newAddress, {headers: {'Access-Control-Allow-Origin': '*'}}).then((res) => res.json()).then((json) => {
 			dataList = json["data"]
 			// console.log(dataList)
 			// console.log(json)
